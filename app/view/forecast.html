@@ -1,0 +1,33 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Forecast By City</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                </hr>
+                <a href="#/forecast/2" ng-class="{'bg-primary': cnt === '2'}">2</a> |
+                <a href="#/forecast/5" ng-class="{'bg-primary': cnt === '5'}">5</a> |
+                <a href="#/forecast/7" ng-class="{'bg-primary': cnt === '7'}">7</a>
+                <label>Enter Days for City : {{city}}</label>
+                <input type="text" placeholder="Enter Days..." ng-model="cnt" name="cnt" class="form-control" value="{{cnt}}"/>
+                <a href="#/forecast" class="btn btn-primary" ng-click="weatherService.getWeatherForecast()">Refresh</a>
+                </hr>
+                <table class="table table-bordered" ng-repeat="weather in weatherResult.list">
+                    <thead>
+                        <tr>
+                        <th>Day:<strong> {{formatDate(weather.dt) | date: 'MMM d, y' }} - {{weather.weather[0].description}}! </strong></th>
+                            <th>Min</th><th>Max</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{weather.temp.day}}</td>
+                            <td>{{weather.temp.min}}</td>
+                            <td>{{weather.temp.max}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
